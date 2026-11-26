@@ -1,0 +1,321 @@
+/* =========================================================
+   K2 · Conecta · Recicla · Valora
+   Hoja de estilos del proyecto final
+   ========================================================= */
+
+/* 1. IDENTIDAD VISUAL ------------------------------------ */
+:root {
+    --verde-oscuro: #05432F;
+    --verde: #1E8E3E;
+    --lima: #7AC70C;
+    --lima-suave: #E7F5CF;
+    --fondo: #F6FAF1;
+    --blanco: #FFFFFF;
+    --texto: #1B2B23;
+    --texto-suave: #4F6358;
+    --sombra: 0 10px 30px rgba(5, 67, 47, .12);
+    --radio: 20px;
+}
+
+/* 2. TIPOGRAFÍA Y BASE ----------------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body {
+    font-family: "Nunito Sans", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--texto);
+    background: var(--fondo);
+}
+
+h1, h2, h3, h4 {
+    font-family: "Outfit", Arial, sans-serif;
+    color: var(--verde-oscuro);
+    line-height: 1.15;
+}
+h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 800; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+h1 em, h2 em { font-style: normal; color: var(--verde); }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+section { padding: 80px 6vw; }
+
+.etiqueta {
+    display: inline-block;
+    background: var(--lima-suave);
+    color: var(--verde-oscuro);
+    font: 700 .78rem "Outfit", sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+.etiqueta-clara { background: rgba(255,255,255,.16); color: var(--lima); }
+
+.seccion-encabezado,
+.calculadora-encabezado,
+.promociones-encabezado,
+.contacto-encabezado { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+.seccion-encabezado p,
+.calculadora-encabezado p,
+.promociones-encabezado p,
+.contacto-encabezado p { margin-top: 12px; color: var(--texto-suave); }
+
+/* Botones */
+.boton, .boton-promo {
+    display: inline-block;
+    background: var(--lima);
+    color: var(--verde-oscuro);
+    font: 700 1rem "Outfit", sans-serif;
+    text-decoration: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 30px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, background .2s;
+}
+.boton:hover, .boton-promo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(122, 199, 12, .45);
+    background: #8ADB10;
+}
+.boton-claro { background: transparent; border: 2px solid var(--verde-oscuro); color: var(--verde-oscuro); }
+.boton-claro:hover { background: var(--verde-oscuro); color: var(--blanco); box-shadow: none; }
+.boton-pequeno { padding: 9px 20px; font-size: .9rem; }
+
+/* 3. ENCABEZADO ------------------------------------------ */
+.encabezado {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 6vw;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 16px rgba(5, 67, 47, .08);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { width: 48px; height: 52px; }
+.logo-texto { display: flex; flex-direction: column; line-height: 1; }
+.logo-texto strong { font: 800 2rem "Outfit", sans-serif; color: var(--verde-oscuro); font-style: italic; }
+.logo-texto strong span { color: var(--lima); }
+.logo-texto small { font: 600 .62rem "Outfit", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--verde-oscuro); margin-top: 3px; }
+
+.menu { display: flex; align-items: center; gap: 28px; }
+.menu a {
+    text-decoration: none; font: 600 .98rem "Outfit", sans-serif; color: var(--verde-oscuro);
+    position: relative; padding: 4px 0;
+}
+.menu a::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 3px;
+    background: var(--lima); border-radius: 3px; transition: width .25s;
+}
+.menu a:hover::after { width: 100%; }
+.menu .menu-cta { background: var(--verde-oscuro); color: var(--blanco); padding: 9px 22px; border-radius: 999px; transition: background .2s; }
+.menu .menu-cta::after { display: none; }
+.menu .menu-cta:hover { background: var(--verde); }
+
+.menu-toggle, .menu-boton { display: none; }
+
+/* 4. PORTADA --------------------------------------------- */
+.portada {
+    position: relative;
+    display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 40px;
+    padding-top: 70px; padding-bottom: 110px;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(122,199,12,.28), transparent 45%),
+        linear-gradient(180deg, #FFFFFF 0%, var(--fondo) 100%);
+    overflow: hidden;
+}
+.portada-texto p { font-size: 1.15rem; color: var(--texto-suave); margin: 20px 0 32px; max-width: 520px; }
+.portada-botones { display: flex; flex-wrap: wrap; gap: 14px; }
+.portada-imagen img { width: 100%; max-width: 560px; margin-inline: auto; filter: drop-shadow(0 20px 30px rgba(5,67,47,.2)); }
+
+.portada-dato {
+    position: absolute; left: 6vw; bottom: 26px;
+    display: flex; align-items: center; gap: 14px;
+    max-width: 460px;
+    background: var(--verde-oscuro); color: var(--blanco);
+    padding: 12px 22px; border-radius: 16px; font-size: .85rem; line-height: 1.35;
+}
+.portada-dato strong { font: 800 2rem "Outfit", sans-serif; color: var(--lima); }
+
+/* Cifras */
+.cifras {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    background: var(--verde-oscuro); padding: 44px 6vw;
+}
+.cifra { text-align: center; color: #D6E8DC; font-size: .92rem; line-height: 1.4; }
+.cifra strong { display: block; font: 800 2.8rem "Outfit", sans-serif; color: var(--lima); }
+
+/* 5. SOBRE NOSOTROS -------------------------------------- */
+.sobre-nosotros { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; }
+.nosotros-imagen img { width: 100%; border-radius: var(--radio); box-shadow: var(--sombra); }
+.nosotros-contenido h2 { margin-bottom: 18px; }
+.nosotros-contenido p { color: var(--texto-suave); margin-bottom: 14px; }
+.diferenciales { list-style: none; margin: 22px 0 30px; display: grid; gap: 12px; }
+.diferenciales li { padding-left: 34px; position: relative; }
+.diferenciales li::before {
+    content: "✓"; position: absolute; left: 0; top: 1px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--lima); color: var(--verde-oscuro); font-weight: 800; font-size: .85rem;
+    display: grid; place-items: center;
+}
+
+/* Pasos */
+.pasos { background: var(--blanco); text-align: center; }
+.pasos h2 { margin-bottom: 44px; }
+.pasos ol { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.pasos li { background: var(--fondo); border-radius: var(--radio); padding: 32px 22px; transition: transform .25s, box-shadow .25s; }
+.pasos li:hover { transform: translateY(-6px); box-shadow: var(--sombra); }
+.pasos li span {
+    display: grid; place-items: center; width: 52px; height: 52px; margin: 0 auto 16px;
+    border-radius: 50%; background: var(--verde); color: var(--blanco); font: 800 1.4rem "Outfit", sans-serif;
+}
+.pasos li:nth-child(even) span { background: var(--lima); color: var(--verde-oscuro); }
+.pasos li p { color: var(--texto-suave); margin-top: 8px; font-size: .95rem; }
+
+/* 6. CATÁLOGO -------------------------------------------- */
+.contenedor-productos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1180px; margin: 0 auto; }
+.tarjeta-producto {
+    background: var(--blanco); border-radius: var(--radio); overflow: hidden;
+    box-shadow: var(--sombra); border: 1px solid #E3EEDC;
+    display: flex; flex-direction: column;
+    transition: transform .3s, box-shadow .3s;
+}
+.tarjeta-producto:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(5,67,47,.2); }
+.tarjeta-producto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lima-suave); }
+.tarjeta-cuerpo { padding: 24px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+.tarjeta-cuerpo p { color: var(--texto-suave); font-size: .97rem; flex: 1; }
+.tarjeta-pie { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; padding-top: 16px; border-top: 1px dashed #CFE0C6; }
+.precio { font: 800 1.5rem "Outfit", sans-serif; color: var(--verde); }
+.precio small { font: 600 .78rem "Nunito Sans", sans-serif; color: var(--texto-suave); }
+
+/* 7. PROMOCIONES ----------------------------------------- */
+.promociones {
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, #0B6B3F 100%);
+    position: relative; overflow: hidden;
+}
+.promociones::before {
+    content: ""; position: absolute; right: -120px; top: -120px; width: 380px; height: 380px;
+    border-radius: 50%; background: rgba(122,199,12,.14);
+}
+.promociones-encabezado h2 { color: var(--blanco); }
+.promociones-encabezado p { color: #CFE5D6; }
+.contenedor-promociones { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; }
+.tarjeta-promocion {
+    display: grid; grid-template-columns: 42% 1fr; background: var(--blanco);
+    border-radius: var(--radio); overflow: hidden; transition: transform .3s;
+}
+.tarjeta-promocion:hover { transform: scale(1.03); }
+.tarjeta-promocion img { width: 100%; height: 100%; object-fit: contain; background: var(--lima-suave); }
+.contenido-promocion { padding: 26px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.contenido-promocion p { color: var(--texto-suave); font-size: .95rem; flex: 1; }
+.descuento { background: var(--lima); color: var(--verde-oscuro); font: 800 .85rem "Outfit", sans-serif; letter-spacing: .08em; padding: 5px 14px; border-radius: 999px; }
+.boton-promo { padding: 10px 24px; font-size: .92rem; background: var(--verde-oscuro); color: var(--blanco); }
+.boton-promo:hover { background: var(--verde); box-shadow: 0 8px 20px rgba(30,142,62,.4); }
+
+/* 8. CALCULADORA ----------------------------------------- */
+.calculadora-contenedor { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; max-width: 1000px; margin: 0 auto; }
+.calculadora-formulario, .resultado-calculadora, .contacto-informacion, .contacto-formulario {
+    border-radius: var(--radio); padding: 34px;
+}
+.calculadora-formulario { background: var(--blanco); box-shadow: var(--sombra); border: 1px solid #E3EEDC; }
+.calculadora-formulario h3, .contacto-formulario h3 { margin-bottom: 18px; }
+
+label { display: block; font: 600 .92rem "Outfit", sans-serif; color: var(--verde-oscuro); margin: 16px 0 6px; }
+input, select, textarea {
+    width: 100%; font: inherit; color: var(--texto);
+    padding: 13px 16px; border: 2px solid #D6E6CC; border-radius: 12px; background: var(--fondo);
+    transition: border-color .2s, box-shadow .2s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--verde); box-shadow: 0 0 0 4px rgba(30,142,62,.15); }
+textarea { resize: vertical; }
+.boton-calcular, .boton-contacto { width: 100%; margin-top: 24px; }
+
+.resultado-calculadora {
+    background: var(--lima-suave); border: 2px dashed var(--verde);
+    display: flex; flex-direction: column; justify-content: center;
+}
+.resultado-calculadora h3 { margin-bottom: 16px; }
+.resultado-calculadora p { color: var(--texto-suave); font-size: .92rem; }
+.resultado-calculadora strong { color: var(--verde-oscuro); font-size: 1.1rem; }
+.resultado-calculadora hr { border: 0; border-top: 1px solid #B9D79A; margin: 20px 0; }
+.valor-total { font: 800 3rem "Outfit", sans-serif; color: var(--verde); line-height: 1.1; }
+.mensaje-calculadora { margin-top: 18px; font-style: italic; }
+
+/* 9. CONTACTO -------------------------------------------- */
+.seccion-contacto { background: var(--verde-oscuro); }
+.contacto-encabezado h2 { color: var(--blanco); }
+.contacto-encabezado p { color: #CFE5D6; }
+.contacto-contenedor { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; max-width: 1050px; margin: 0 auto; }
+.contacto-informacion { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: var(--blanco); }
+.contacto-informacion h3 { color: var(--lima); margin-bottom: 20px; }
+.dato-contacto { margin-bottom: 18px; }
+.dato-contacto h4 { color: var(--lima); font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; }
+.dato-contacto a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); transition: color .2s, border-color .2s; }
+.dato-contacto a:hover { color: var(--lima); border-color: var(--lima); }
+.redes { display: flex; gap: 18px; flex-wrap: wrap; }
+.contacto-formulario { background: var(--blanco); }
+
+/* 10. PIE DE PÁGINA -------------------------------------- */
+.pie {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px;
+    background: #032C1F; color: #BFD6C8; padding: 28px 6vw; font-size: .9rem;
+}
+.pie-marca { display: flex; align-items: center; gap: 10px; }
+.pie-marca img { width: 38px; height: 42px; }
+.pie-marca strong { font: 800 1.6rem "Outfit", sans-serif; font-style: italic; color: var(--blanco); display: block; line-height: 1; }
+.pie-marca strong span { color: var(--lima); }
+.pie-marca small { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
+.pie-copy { text-align: center; }
+.pie-redes { display: flex; justify-content: flex-end; gap: 16px; }
+.pie-redes a { text-decoration: none; transition: color .2s; }
+.pie-redes a:hover { color: var(--lima); }
+
+/* 11. ADAPTACIÓN A CELULARES ----------------------------- */
+@media (max-width: 960px) {
+    .portada, .sobre-nosotros { grid-template-columns: 1fr; }
+    .portada { padding-bottom: 150px; text-align: center; }
+    .portada-texto p { margin-inline: auto; }
+    .portada-botones { justify-content: center; }
+    .portada-dato { left: 50%; transform: translateX(-50%); width: 88%; }
+    .cifras, .pasos ol { grid-template-columns: repeat(2, 1fr); }
+    .contenedor-productos { grid-template-columns: 1fr; max-width: 520px; }
+    .contenedor-promociones, .calculadora-contenedor, .contacto-contenedor { grid-template-columns: 1fr; }
+
+    /* menú hamburguesa */
+    .menu-boton { display: block; width: 44px; height: 44px; cursor: pointer; position: relative; z-index: 60; }
+    .menu-boton span, .menu-boton span::before, .menu-boton span::after {
+        position: absolute; left: 10px; width: 24px; height: 3px; background: var(--verde-oscuro); border-radius: 3px; transition: .3s; content: "";
+    }
+    .menu-boton span { top: 20px; }
+    .menu-boton span::before { left: 0; top: -8px; }
+    .menu-boton span::after { left: 0; top: 8px; }
+    .menu {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 6px; padding: 14px 6vw 22px;
+        background: var(--blanco); box-shadow: 0 14px 20px rgba(5,67,47,.12);
+        display: none;
+    }
+    .menu a { padding: 12px 0; width: 100%; font-size: 1.05rem; }
+    .menu .menu-cta { text-align: center; }
+    .menu-toggle:checked ~ .menu { display: flex; }
+    .menu-toggle:checked ~ .menu-boton span { background: transparent; }
+    .menu-toggle:checked ~ .menu-boton span::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle:checked ~ .menu-boton span::after { top: 0; transform: rotate(-45deg); }
+}
+
+@media (max-width: 600px) {
+    section { padding: 60px 5vw; }
+    .cifras, .pasos ol { grid-template-columns: 1fr; }
+    .tarjeta-promocion { grid-template-columns: 1fr; }
+    .tarjeta-promocion img { aspect-ratio: 16 / 9; }
+    .calculadora-formulario, .resultado-calculadora, .contacto-informacion, .contacto-formulario { padding: 24px; }
+    .pie { grid-template-columns: 1fr; text-align: center; }
+    .pie-marca, .pie-redes { justify-content: center; }
+}
